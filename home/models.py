@@ -53,7 +53,8 @@ class HomePage(Page):
     ]
 
     api_fields = [
-        APIField('hero_banner'),
+        APIField('hero_banner.download_url'),
+        APIField('hero_banner.focal_point_x'),
         APIField('hero_banner_resized', serializer=ImageRenditionField('width-1800|jpegquality-80', source='hero_banner')),
         APIField('welcome_quote'),
         APIField('subheading'),
