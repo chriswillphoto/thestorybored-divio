@@ -17,4 +17,11 @@ aldryn_addons.settings.load(locals())
 
 INSTALLED_APPS.extend([
     # add your project specific apps here
+    'users'
 ])
+
+AUTH_USER_MODEL = 'users.user'
+
+WAGTAIL_USER_EDIT_FORM = 'users.forms.CustomUserEditForm'
+WAGTAIL_USER_CREATION_FORM = 'users.forms.CustomUserCreationForm'
+WAGTAIL_USER_CUSTOM_FIELDS = ['bio']
