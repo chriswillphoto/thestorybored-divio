@@ -66,7 +66,7 @@ class BlogIndex(Page):
 class ImageSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CustomImage
-        fields = ['title', 'file', 'width', 'height', 'file_size', 'focal_point_x', 'focal_point_y', 'focal_point_width', 'focal_point_height']
+        fields = ['title', 'file', 'caption', 'width', 'height', 'file_size', 'focal_point_x', 'focal_point_y', 'focal_point_width', 'focal_point_height']
 
 class APIImageChooserBlock(ImageChooserBlock):
     def get_api_representation(self, value, context=None):

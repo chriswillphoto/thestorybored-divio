@@ -13,8 +13,37 @@ from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
 
 from images.models import CustomImage
+
+from rest_framework import serializers
+
+from wagtail.images.models import SourceImageIOError
+from collections import OrderedDict
 # Create your models here.
 
+class CustomImageRenditionField(ImageRenditionField):
+    def to_representation(self, image):
+        try:
+            thumbnail = image.get_rendition(self.filter_spec)
+
+            if thumbnail.image.focal_point_x is not None and thumbnail.image.focal_point_y is not None:
+
+                focal_point_x = thumbnail.image.get_focal_point().x / thumbnail.image.width
+                focal_point_y = thumbnail.image.get_focal_point().y / thumbnail.image.height
+            else:
+                focal_point_x = None
+                focal_point_y = None
+
+            return OrderedDict([
+                ('url', thumbnail.url),
+                ('width', thumbnail.width),
+                ('height', thumbnail.height),
+                ('caption', thumbnail.image.caption),
+                ('focal_points', [focal_point_x, focal_point_y]),
+            ])
+        except SourceImageIOError:
+            return OrderedDict([
+                ('error', 'SourceImageIOError'),
+            ])
 
 class HomePage(Page):
 
@@ -52,10 +81,10 @@ class HomePage(Page):
         FieldPanel('intro_about_image'),
     ]
 
+
     api_fields = [
-        APIField('hero_banner.download_url'),
-        APIField('hero_banner.focal_point_x'),
-        APIField('hero_banner_resized', serializer=ImageRenditionField('width-1800|jpegquality-80', source='hero_banner')),
+        APIField('hero_banner'),
+        APIField('hero_banner_resized', serializer=CustomImageRenditionField('width-1800|jpegquality-80', source='hero_banner')),
         APIField('welcome_quote'),
         APIField('subheading'),
         APIField('intro_about'),
