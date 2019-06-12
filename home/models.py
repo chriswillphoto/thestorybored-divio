@@ -40,17 +40,13 @@ class CustomImageRenditionField(ImageRenditionField):
                 ('caption', thumbnail.image.caption),
                 ('focal_points', [focal_point_x, focal_point_y]),
             ])
+
         except SourceImageIOError:
             return OrderedDict([
                 ('error', 'SourceImageIOError'),
             ])
 
 class HomePage(Page):
-
-    def save(self, *args, **kwargs):
-        if HomePage.objects.exists() and not self.pk:
-            raise ValidationError('There can only be one HomePage')
-        return super(HomePage, self).save(*args, **kwargs)
 
     hero_banner = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True)
     welcome_quote = RichTextField(blank=True, features=['bold', 'link'])
