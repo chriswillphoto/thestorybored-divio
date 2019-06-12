@@ -2,5 +2,5 @@
 https://control.divio.com/api/v1/apps/serve/aldryn-addons/1.0.3/58b64fcd-ac05-4284-b650-f897061479b7/aldryn-addons-1.0.3.tar.gz#egg=aldryn-addons==1.0.3
 https://control.divio.com/api/v1/apps/serve/aldryn-django/2.0.13.2/4eafb93a-5dd0-474b-a856-121ee72d033b/aldryn-django-2.0.13.2.tar.gz#egg=aldryn-django==2.0.13.2
 https://control.divio.com/api/v1/apps/serve/aldryn-sso/1.6.0/6d90e844-d7ef-4faa-b527-5df3d49277be/aldryn-sso-1.6.0.tar.gz#egg=aldryn-sso==1.6.0
-https://control.divio.com/api/v1/apps/serve/aldryn-wagtail/2.3.0.1/efed86ad-a986-4aa3-91e2-817411efcdc2/aldryn-wagtail-2.3.0.1.tar.gz#egg=aldryn-wagtail==2.3.0.1
+https://control.divio.com/api/v1/apps/serve/aldryn-wagtail/2.5.1.0/509fe786-7bee-493e-9b29-3343d19ee8d1/aldryn-wagtail-2.5.1.0.tar.gz#egg=aldryn-wagtail==2.5.1.0
 # </INSTALLED_ADDONS>
