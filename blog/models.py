@@ -89,6 +89,7 @@ class BlogPost(Page):
 
     content_panels = Page.content_panels + [
         # FieldPanel('author'),
+        FieldPanel('subtitle'),
         FieldPanel('date'),
         ImageChooserPanel('banner'),
         StreamFieldPanel('body', classname='collapsible'),
@@ -102,6 +103,7 @@ class BlogPost(Page):
         APIField('owner.get_full_name', serializer=serializers.StringRelatedField()),
         APIField('owner.bio', serializer=serializers.StringRelatedField()),
         APIField('date'),
+        APIField('subtitle'),
         APIField('body'),
         APIField('slug'),
         APIField('categories', serializer=serializers.StringRelatedField(many=True)),
