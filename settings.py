@@ -21,6 +21,8 @@ INSTALLED_APPS.extend([
     'blog',
     'images',
     'home',
+    'about',
+    'contact',
     'wagtail.api.v2',
     'rest_framework'
 ])
