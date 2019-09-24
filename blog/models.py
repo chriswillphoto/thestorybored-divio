@@ -24,7 +24,12 @@ from images.models import CustomImage
 @register_snippet
 class BlogCategory(models.Model):
     name = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, max_length=80, help_text='The name of this category in the URL. Often just the same as the name in lowercase.')
+    slug = models.SlugField(
+        unique=True,
+        max_length=80,
+        help_text='''The name of this category in the URL.
+        Often just the same as the name in lowercase.'''
+        )
 
     panels = [
         FieldPanel('name'),
