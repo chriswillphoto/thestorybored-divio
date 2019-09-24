@@ -52,7 +52,7 @@ class ContactPage(Page):
     api_fields = [
         APIField('hero_banner'),
         APIField('hero_banner_resized', serializer=CustomImageRenditionField('width-1800|jpegquality-80', source='hero_banner')),
-        APIField('welcome_quote'),
+        # APIField('welcome_quote'),
         APIField('subheading'),
         APIField('about_text'),
         APIField('about_image'),
