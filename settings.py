@@ -24,7 +24,8 @@ INSTALLED_APPS.extend([
     'about',
     'contact',
     'wagtail.api.v2',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders'
 ])
 
 AUTH_USER_MODEL = 'users.user'
@@ -36,3 +37,19 @@ WAGTAIL_USER_CUSTOM_FIELDS = ['bio']
 WAGTAILIMAGES_IMAGE_MODEL = 'images.CustomImage'
 
 WAGTAILAPI_LIMIT_MAX = 30
+
+CORS_ORIGIN_WHITELIST = (
+    'https://tashtalevski.com',
+    'http://localhost:3000',
+    'https://friendly-poincare-58f75c.netlify.com'
+)
+
+MIDDLEWARE.insert(
+    0,
+    'corsheaders.middleware.CorsMiddleware'
+)
+
+MIDDLEWARE.insert(
+    1,
+    'django.middleware.common.CommonMiddleware'
+)

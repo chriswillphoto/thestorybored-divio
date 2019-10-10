@@ -4,3 +4,5 @@ https://control.divio.com/api/v1/apps/serve/aldryn-django/2.0.13.2/4eafb93a-5dd0
 https://control.divio.com/api/v1/apps/serve/aldryn-sso/1.6.0/6d90e844-d7ef-4faa-b527-5df3d49277be/aldryn-sso-1.6.0.tar.gz#egg=aldryn-sso==1.6.0
 https://control.divio.com/api/v1/apps/serve/aldryn-wagtail/2.5.1.0/509fe786-7bee-493e-9b29-3343d19ee8d1/aldryn-wagtail-2.5.1.0.tar.gz#egg=aldryn-wagtail==2.5.1.0
 # </INSTALLED_ADDONS>
+
+django-cors-headers
