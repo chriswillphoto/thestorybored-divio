@@ -38,6 +38,7 @@ class CustomImageRenditionField(ImageRenditionField):
                 ('width', thumbnail.width),
                 ('height', thumbnail.height),
                 ('caption', thumbnail.image.caption),
+                ('alt_text', thumbnail.image.alt_text),
                 ('focal_points', [focal_point_x, focal_point_y]),
             ])
 
@@ -50,6 +51,7 @@ class HomePage(Page):
 
     hero_banner = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True)
     welcome_quote = RichTextField(blank=True, features=['bold', 'link'])
+    welcome_quote_image = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True)
     subheading = models.CharField(max_length=250, blank=True)
     intro_about = RichTextField(blank=True)
     intro_about_image = models.ImageField(upload_to="homepage", blank=True)
