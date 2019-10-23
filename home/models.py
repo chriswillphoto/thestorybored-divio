@@ -51,7 +51,7 @@ class HomePage(Page):
 
     hero_banner = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True)
     welcome_quote = RichTextField(blank=True, features=['bold', 'link'])
-    welcome_quote_image = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True, related_name='welcome_quote_img')
+    welcome_quote_image = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True, blank=True, related_name='welcome_quote_img')
     subheading = models.CharField(max_length=250, blank=True)
     intro_about = RichTextField(blank=True)
     intro_about_image = models.ImageField(upload_to="homepage", blank=True)
