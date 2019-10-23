@@ -51,7 +51,7 @@ class HomePage(Page):
 
     hero_banner = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True)
     welcome_quote = RichTextField(blank=True, features=['bold', 'link'])
-    welcome_quote_image = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True)
+    welcome_quote_image = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True, related_name='welcome_quote_img')
     subheading = models.CharField(max_length=250, blank=True)
     intro_about = RichTextField(blank=True)
     intro_about_image = models.ImageField(upload_to="homepage", blank=True)
@@ -60,6 +60,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         ImageChooserPanel('hero_banner'),
         FieldPanel('welcome_quote'),
+        ImageChooserPanel('welcome_quote_img'),
         FieldPanel('subheading'),
         # MultiFieldPanel(
         #     [
@@ -84,6 +85,7 @@ class HomePage(Page):
         APIField('hero_banner'),
         APIField('hero_banner_resized', serializer=CustomImageRenditionField('width-1800|jpegquality-80', source='hero_banner')),
         APIField('welcome_quote'),
+        APIField('welcome_quote_image'),
         APIField('subheading'),
         APIField('intro_about'),
         APIField('intro_about_image'),
