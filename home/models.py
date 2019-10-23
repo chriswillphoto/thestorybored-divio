@@ -60,7 +60,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         ImageChooserPanel('hero_banner'),
         FieldPanel('welcome_quote'),
-        ImageChooserPanel('welcome_quote_img'),
+        ImageChooserPanel('welcome_quote_image'),
         FieldPanel('subheading'),
         # MultiFieldPanel(
         #     [
