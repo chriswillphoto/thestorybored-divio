@@ -23,12 +23,15 @@ from home.models import CustomImageRenditionField
 class ContactPage(Page):
     hero_banner = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True)
     subheading = models.CharField(max_length=250, blank=True)
+    welcome_quote = RichTextField(blank=True, features=['bold', 'link'])
+    welcome_quote_image = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True, blank=True, related_name='contact_welcome_quote_img')
     about_text = RichTextField(blank=True)
     about_image = models.ImageField(upload_to="homepage", blank=True)
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('hero_banner'),
-        # FieldPanel('welcome_quote'),
+        FieldPanel('welcome_quote'),
+        ImageChooserPanel('welcome_quote_image'),
         FieldPanel('subheading'),
         # MultiFieldPanel(
         #     [
@@ -52,7 +55,8 @@ class ContactPage(Page):
     api_fields = [
         APIField('hero_banner'),
         APIField('hero_banner_resized', serializer=CustomImageRenditionField('width-1800|jpegquality-80', source='hero_banner')),
-        # APIField('welcome_quote'),
+        APIField('welcome_quote'),
+        APIField('welcome_quote_image', serializer=CustomImageRenditionField('width-1200|jpegquality-80', source='welcome_quote_image')),
         APIField('subheading'),
         APIField('about_text'),
         APIField('about_image'),
