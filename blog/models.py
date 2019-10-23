@@ -5,7 +5,7 @@ from rest_framework import serializers
 
 from wagtail.images.models import Image
 from wagtail.core.models import Page
-from wagtail.core.fields import StreamField
+from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.blocks import ImageChooserBlock
@@ -88,6 +88,8 @@ class BlogPost(Page):
         ('image', APIImageChooserBlock()),
         ('key_quote', blocks.CharBlock(icon='openquote')),
     ])
+    welcome_quote = RichTextField(blank=True, features=['bold', 'link'])
+    welcome_quote_image = models.ForeignKey(CustomImage, on_delete=models.SET_NULL, null=True, blank=True, related_name='blog_welcome_quote_img')
     categories = ParentalManyToManyField('blog.BlogCategory', blank=True)
     # author_object = User.objects.get(id=author)
     # author_name = author_object.get_full_name()
@@ -98,6 +100,8 @@ class BlogPost(Page):
         FieldPanel('date'),
         ImageChooserPanel('banner'),
         StreamFieldPanel('body', classname='collapsible'),
+        FieldPanel('welcome_quote'),
+        ImageChooserPanel('welcome_quote_image'),
         FieldPanel('categories', widget=django.forms.CheckboxSelectMultiple),
     ]
 
@@ -111,6 +115,8 @@ class BlogPost(Page):
         APIField('subtitle'),
         APIField('body'),
         APIField('slug'),
+        APIField('welcome_quote'),
+        APIField('welcome_quote_image'),
         APIField('categories', serializer=serializers.StringRelatedField(many=True)),
     ]
 
