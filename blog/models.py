@@ -18,6 +18,7 @@ from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
 
 from images.models import CustomImage
+from home.models import CustomImageRenditionField
 
 # from users import User
 
@@ -116,7 +117,7 @@ class BlogPost(Page):
         APIField('body'),
         APIField('slug'),
         APIField('welcome_quote'),
-        APIField('welcome_quote_image'),
+        APIField('welcome_quote_image', serializer=CustomImageRenditionField('width-1200|jpegquality-80')),
         APIField('categories', serializer=serializers.StringRelatedField(many=True)),
     ]
 

@@ -56,7 +56,7 @@ class AboutPage(Page):
         APIField('hero_banner'),
         APIField('hero_banner_resized', serializer=CustomImageRenditionField('width-1800|jpegquality-80', source='hero_banner')),
         APIField('welcome_quote'),
-        APIField('welcome_quote_image', serializer=CustomImageRenditionField('width-1200|jpegquality-80', source='welcome_quote_image')),
+        APIField('welcome_quote_image', serializer=CustomImageRenditionField('width-1200|jpegquality-80')),
         APIField('subheading'),
         APIField('about_text'),
         APIField('about_image'),
